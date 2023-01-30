@@ -7,7 +7,7 @@
 #include <exception>
 #include <Windows.h>
 
-#define INDENT 43
+#define INDENT 31
 #define TAB 4
 
 std::mutex m;
@@ -30,7 +30,7 @@ void printBar(int serialNum, int calcDuration)
 		auto start = std::chrono::high_resolution_clock::now();
 		m.lock();
 		GoToXY(0, serialNum);
-		std::cout << "Thread " << serialNum << " with thread id " << std::this_thread::get_id << " ";
+		std::cout << "Thread " << serialNum << " with thread id " << std::this_thread::get_id() << " ";
 		m.unlock();
 		for (int progress = 0; progress <= calcDuration; ++progress)
 		{
